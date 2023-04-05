@@ -7,14 +7,23 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @Configuration
 public class SocketIOConfiguration implements ApplicationListener<ApplicationReadyEvent> {
 
-    @Value("${socket.server.host}")
-    private String host;
+    /*@Value("${socket.server.host}")
+    private String host;*/
+
+    private final String host;
 
     @Value("${socket.server.port}")
     private int port;
+
+    public SocketIOConfiguration() throws UnknownHostException {
+        this.host = InetAddress.getLocalHost().getHostAddress();
+    }
 
     @Bean
     public SocketIOServer socketIOServer() {

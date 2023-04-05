@@ -19,6 +19,7 @@ public class SocketService {
                 .messageType(MessageType.SERVER)
                 .content(message)
                 .room(room)
+                .username("SERVER")
                 .build());
 
         this.sendSocketMessage(socketIOClient, savedMessage, room);
@@ -29,6 +30,7 @@ public class SocketService {
                 .messageType(MessageType.CLIENT)
                 .content(message.getContent())
                 .room(message.getRoom())
+                .username(message.getUsername())
                 .build());
 
         this.sendSocketMessage(socketIOClient, savedMessage, message.getRoom());

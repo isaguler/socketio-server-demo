@@ -56,7 +56,7 @@ public class SocketServer {
             String room = String.join("", urlParams.get("room"));
             String username = String.join("", urlParams.get("username"));
 
-            socketService.saveInfoMessage(socketIOClient, "welcome " + username, room);
+            socketService.saveInfoMessage(socketIOClient, "see you later " + username, room);
 
             log.info("disconnected: {} {} {}", socketIOClient.getSessionId(), room, username);
         };
